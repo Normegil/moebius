@@ -4,7 +4,11 @@
   "description": "Command-Line tool to find and download comics (As well as NodeJS module)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mocha": "node_modules/mocha/bin/mocha \"test/**/*.js\"",
+    "lint": "node_modules/jshint/bin/jshint index.js test && node_modules/jscs/bin/jscs -c test/.jscsrc test && node_modules/jscs/bin/jscs -c .jscsrc index.js",
+    "test": "npm run lint && npm run mocha",
+    "push": "git push && git push --tags && npm publish",
+    "preversion": "npm test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,7 @@
   "bugs": {
     "url": "https://github.com/Normegil/moebius/issues"
   },
+  "homepage": "https://github.com/Normegil/moebius#readme",
   "devDependencies": {
     "chai": "^3.3.0",
     "jscs": "^2.3.0",
