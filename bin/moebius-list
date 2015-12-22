@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+'use strict';
+
+let pathToLib = './../lib/';
+let app = require(pathToLib + 'app');
+
+app.list()
+  .then(function onSuccess(mangas) {
+    let titles = mangas.map(function toTitle(manga) {
+      return manga.title;
+    });
+    let sortedTitles = titles.sort();
+    sortedTitles.forEach(function print(title) {
+      console.log(title);
+    });
+  }).catch(function onError(err) {
+    console.error(err.stack);
+  });

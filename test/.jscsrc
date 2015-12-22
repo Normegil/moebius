@@ -1,5 +1,6 @@
 {
   "preset"                          : "../.jscsrc",
+  "disallowQuotedKeysInObjects"     : false,
   "disallowAnonymousFunctions"      : false,
   "requireNamedUnassignedFunctions" : false,
   "requireBlocksOnNewline"          : false,

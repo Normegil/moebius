@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+'use strict';
+
+let pathToLib = './../lib/';
+let app = require(pathToLib + 'app');
+
+app.download('Suki Hani', './')
+  .then(function onSuccess() {
+    console.log('Downloaded');
+  }).catch(function onError(err) {
+    console.error(err.stack);
+  });
