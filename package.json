@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "unit-test": "node_modules/tape/bin/tape \"test/**/*.js\" | node_modules/faucet/bin/cmd.js",
-    "lint": "node_modules/jshint/bin/jshint index.js test && node_modules/jscs/bin/jscs -c test/.jscsrc test && node_modules/jscs/bin/jscs -c .jscsrc index.js",
+    "lint": "node_modules/jshint/bin/jshint bin lib test && node_modules/jscs/bin/jscs -c test/.jscsrc test && node_modules/jscs/bin/jscs -c .jscsrc lib bin",
     "test": "npm run lint && npm run unit-test",
     "push": "git push && git push --tags && npm publish",
     "preversion": "npm test"
@@ -35,8 +35,10 @@
   },
   "dependencies": {
     "commander": "^2.9.0",
+    "deep-extend": "^0.4.0",
     "mkdirp": "^0.5.1",
     "request": "^2.65.0",
-    "string-template": "^0.2.1"
+    "string-template": "^0.2.1",
+    "terminal-kit": "^0.21.1"
   }
 }

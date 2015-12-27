@@ -25,6 +25,5 @@
 	"unused"					:	true,
 
 	"globals" :	{
-		"requireModule"	:	false
 	}
 }
