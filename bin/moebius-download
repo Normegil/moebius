@@ -12,11 +12,23 @@ program
   .usage('[options] <manga ...>')
   .option('-p, --path <path>', 'Indicate path to directory where to save downloaded files')
   .option('-r, --refresh', 'Don\'t load from cache and refresh it instead')
+  .option('--pool <size>', 'Set the download pool size. Defaults to 10. ' +
+    'Set to 0 to disable. If it\'s set too high, you risk to encounter a timeout while downloading')
   .parse(process.argv);
 
 let path = './';
 if (program.path) {
   path = program.path;
+}
+
+let totalPoolSize = 10;
+if (h.exist(program.pool)) {
+  totalPoolSize = program.pool;
+}
+
+let poolSize = Math.round(totalPoolSize / program.args.length);
+if (program.pool > 0 && poolSize < 1) {
+  poolSize = 1;
 }
 
 if (undefined === program.args || 0 === program.args.length) {
@@ -28,8 +40,9 @@ if (undefined === program.args || 0 === program.args.length) {
 h.libraries.terminalKit.getCursorLocation(term)
   .then(function onSuccess(coordinates) {
     let adjuster = 0;
-    let promises = program.args.map(function createDownloader(argument) {
-      let downloader = app.download(argument, path);
+    let mangas = program.args;
+    let promises = mangas.map(function createDownloader(manga) {
+      let downloader = app.download(manga, path, poolSize);
       manageEvents({
         events: downloader.events,
         definition: app.events,
@@ -57,6 +70,7 @@ function manageEvents(eventsDef, coordinates) {
   let events = eventsDef.events;
   let definition = eventsDef.definition;
 
+  let imageDownloading = 0;
   let imageDownloaded = 0;
   let totalImages = 0;
   let chaptersClosed = 0;
@@ -115,6 +129,7 @@ function manageEvents(eventsDef, coordinates) {
           },
           images: {
             total: totalImages,
+            downloading: imageDownloading,
             downloaded: imageDownloaded,
           },
         });
@@ -125,8 +140,30 @@ function manageEvents(eventsDef, coordinates) {
     }
   });
 
-  events.on(definition.chapter.imageDownloaded, function onImageDownloaded(args) {
+  events.on(definition.chapter.image.downloading, function onImageDownloading(args) {
     try {
+      imageDownloading += 1;
+      status.update({
+        step: args.step,
+        chapters: {
+          total: h.exist(args.manga.chapters) ? args.manga.chapters.length : undefined,
+          closed: chaptersClosed,
+        },
+        images: {
+          total: totalImages,
+          downloading: imageDownloading,
+          downloaded: imageDownloaded,
+        },
+      });
+    } catch (err) {
+      term.red(err.stack);
+      term.processExit(1);
+    }
+  });
+
+  events.on(definition.chapter.image.downloaded, function onImageDownloaded(args) {
+    try {
+      imageDownloading -= 1;
       imageDownloaded += 1;
       status.update({
         step: args.step,
@@ -136,6 +173,7 @@ function manageEvents(eventsDef, coordinates) {
         },
         images: {
           total: totalImages,
+          downloading: imageDownloading,
           downloaded: imageDownloaded,
         },
       });
