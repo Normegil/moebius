@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 'use strict';
 
+let program = require('commander');
 let pathToLib = './../lib/';
 let app = require(pathToLib + 'app');
 
-app.list()
+program
+  .usage('[options]')
+  .option('-r, --refresh', 'Don\'t load from cache and refresh it instead')
+  .parse(process.argv);
+
+app.list(!program.refresh)
   .then(function onSuccess(mangas) {
     let titles = mangas.map(function toTitle(manga) {
       return manga.title;

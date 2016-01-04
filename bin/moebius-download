@@ -11,6 +11,7 @@ let mangaStatus = require(pathToLib + 'terminal/mangaStatus');
 program
   .usage('[options] <manga ...>')
   .option('-p, --path <path>', 'Indicate path to directory where to save downloaded files')
+  .option('-r, --refresh', 'Don\'t load from cache and refresh it instead')
   .parse(process.argv);
 
 let path = './';
@@ -37,7 +38,7 @@ h.libraries.terminalKit.getCursorLocation(term)
         y: coordinates.y + adjuster,
       });
       adjuster += 2;
-      return downloader.start();
+      return downloader.start(!program.refresh);
     });
     term.moveTo(coordinates.x, coordinates.y + adjuster);
     return Promise.all(promises);
