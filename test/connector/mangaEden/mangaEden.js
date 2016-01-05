@@ -129,7 +129,7 @@ let mangaEden = proxyquire(
 let moduleName = 'MangaEden API Module';
 let functionName = 'loadMangas()';
 test(moduleName + '.' + functionName + ' - Default language is English', function(assert) {
-  mangaEden.loadMangas()
+  mangaEden.loadMangas(false)
     .then(function onLoad(mangas) {
       assert.deepEqual(mangas, resources.manga.english.result);
       assert.end();
@@ -138,7 +138,7 @@ test(moduleName + '.' + functionName + ' - Default language is English', functio
     });
 });
 test(moduleName + '.' + functionName + ' - English', function(assert) {
-  mangaEden.loadMangas('en')
+  mangaEden.loadMangas(false, 'en')
     .then(function onLoad(mangas) {
       assert.deepEqual(mangas, resources.manga.english.result);
       assert.end();
@@ -147,7 +147,7 @@ test(moduleName + '.' + functionName + ' - English', function(assert) {
     });
 });
 test(moduleName + '.' + functionName + ' - Italian', function(assert) {
-  mangaEden.loadMangas('it')
+  mangaEden.loadMangas(false, 'it')
     .then(function onLoad(mangas) {
       assert.deepEqual(mangas, resources.manga.italian.result);
       assert.end();
@@ -156,7 +156,7 @@ test(moduleName + '.' + functionName + ' - Italian', function(assert) {
     });
 });
 test(moduleName + '.' + functionName + ' - has correct format', function(assert) {
-  mangaEden.loadMangas()
+  mangaEden.loadMangas(false)
     .then(function onLoad(mangas) {
       assert.deepEqual(mangas, resources.manga.english.result);
       assert.end();
@@ -165,7 +165,7 @@ test(moduleName + '.' + functionName + ' - has correct format', function(assert)
     });
 });
 test(moduleName + '.' + functionName + ' - crash with unknown language', function(assert) {
-  mangaEden.loadMangas('fr')
+  mangaEden.loadMangas(false, 'fr')
   .then(function onLoad() {
     assert.end(new Error('Should have crashed (Unknown language)'));
   }).catch(function onError() {
