@@ -1,6 +1,6 @@
 {
   "name": "moebius",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Command-Line tool to find and download comics (As well as NodeJS module)",
   "main": "electron.js",
   "bin": {
