@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Command-Line tool to find and download comics (As well as NodeJS module)",
   "main": "electron.js",
+  "bin": {
+    "moebius": "bin/moebius"
+  },
   "scripts": {
     "start": "./bin/./moebius",
     "unit-test": "node_modules/tape/bin/tape \"test/**/*.js\" | node_modules/faucet/bin/cmd.js",
