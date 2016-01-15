@@ -1,3 +1,6 @@
 #Node
 node_modules/
-npm-debug.log
+bower_components/
+
+#Log files
+*.log

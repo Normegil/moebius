@@ -7,4 +7,5 @@ program
   .version('0.0.1')
   .command('list', 'List available mangas to download')
   .command('download', 'Download an entire manga')
+  .command('gui', 'Launch the gui')
   .parse(process.argv);

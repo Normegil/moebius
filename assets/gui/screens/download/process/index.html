@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Moebius - Download progress</title>
+    <link type="text/css" rel="stylesheet" href="../../../bower_components/Materialize/dist/css/materialize.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="../../../css/fonts/fonts.css" media="screen" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="./index.css" media="screen" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="row indigo white-text z-depth-1">
+      <div class="col s4">
+        <div class="container">
+          <span class="sub-title">Pool size:</span> <span id="pool-size"></span>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="container">
+          <span class="sub-title">Path:</span> <span id="path"></span>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="container">
+          <span class="sub-title">Number of mangas:</span> <span id="manga-number"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s2 offset-s1">
+          <a id="close-window" class="btn orange white-text">Close</a>
+      </div>
+      <div id='message-block' class="valign-wrapper custom-hide">
+        <div class="col s5 offset-s1">
+          <div class="indigo lighten-1 white-text message">
+              <span id="message"></span>
+              <a id="delete-message" class="black-text"><i class="mdi-action-delete"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="download-list" class="row limit-height overflowY">
+      <table class="highlight">
+        <thead>
+          <tr>
+              <th data-field="title">Title</th>
+              <th data-field="name">Step</th>
+              <th data-field="chapterTotal">Number of chapters</th>
+              <th data-field="imagesDownloading">Image downloading</th>
+              <th data-field="imagesDownloaded">Image downloaded</th>
+          </tr>
+        </thead>
+        <tbody id="manga-statuses">
+        </tbody>
+      </table>
+    </div>
+    <script>window.$ = window.jQuery = require('../../../bower_components/jquery/dist/jquery.js');</script>
+    <script type="text/javascript" src="../../../bower_components/Materialize/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+html, body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.limit-height {
+  height: 98%;
+}
+
+.overflowY {
+  overflow-y: auto;
+}

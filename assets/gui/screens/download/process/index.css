@@ -1,0 +1,34 @@
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.limit-height {
+  height: 92%;
+}
+
+.overflowY {
+  overflow-y: auto;
+}
+
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sub-title {
+  font-weight: bold;
+}
+
+.message {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px dashed black;
+  border-radius: 5px;
+}
+
+.custom-hide {
+  display: none;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Moebius - Download</title>
+    <link type="text/css" rel="stylesheet" href="../../../bower_components/Materialize/dist/css/materialize.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="../../../css/fonts/fonts.css" media="screen" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="./index.css" media="screen" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="row limit-height">
+      <div class="col s4 indigo white-text z-depth-2">
+        <div class="row">
+          <h5 id="title">Download</h5>
+        </div>
+        <div class="row">
+          <form action="#" >
+            <div class="input-field">
+              Pool size:
+              <input id="pool-size" type="number" class="validate" placeholder="Pool size (Recommanded 10)" value="10">
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <form action="#" class="">
+            <div class="file-field input-field">
+              <a href="#" class="btn indigo darken-2 folder-selector">Folder</a>
+              <div class="file-path-wrapper">
+                <input id="path" class="file-path validate" type="text">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="right">
+            <a href="#" class="btn orange start-download"><i class="left mdi-file-file-download"></i>Start</a>
+            <a href="#" class="btn-flat white-text reset-list"><i class="left mdi-av-loop"></i>Reset</a>
+            <a href="#" class="btn-flat white-text cancel-download"><i class="left mdi-navigation-cancel"></i>Cancel</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s8 limit-height">
+        <div id="download-list" class="collection limit-height overflowY">
+        </div>
+      </div>
+    </div>
+    <script>window.$ = window.jQuery = require('../../../bower_components/jquery/dist/jquery.js');</script>
+    <script type="text/javascript" src="../../../bower_components/Materialize/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../../../js/storage.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+  </body>
+</html>

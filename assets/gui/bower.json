@@ -1,0 +1,17 @@
+{
+  "name": "moebius-gui",
+  "homepage": "https://github.com/Normegil/moebius",
+  "authors": [
+    "Olivier Ory <mail@normegil.be>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#~0.97.5"
+  }
+}

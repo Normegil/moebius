@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+'use strict';
+
+const electronPath = require('electron-prebuilt');
+const childProcess = require('child_process');
+
+// Adjust the command line arguments: remove the "node <code.js>" part
+let args = process.argv.slice(2);
+// ... and insert the root path of our application
+args.unshift(__dirname + '/../');
+
+childProcess.spawn(electronPath, args,{
+  stdio: 'inherit',
+});
