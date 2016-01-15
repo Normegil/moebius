@@ -39,13 +39,13 @@
     "tape": "^4.2.1"
   },
   "dependencies": {
-    "bower": "^1.7.2",
     "bunyan": "^1.5.1",
     "commander": "^2.9.0",
     "deep-extend": "^0.4.0",
     "electron-prebuilt": "^0.36.2",
     "es6-promise-pool": "^2.4.1",
     "home-or-tmp": "^2.0.0",
+    "materialize-css": "^0.97.5",
     "mkdirp": "^0.5.1",
     "moment": "^2.11.0",
     "request": "^2.65.0",
